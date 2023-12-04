@@ -4,5 +4,5 @@ const initialState = { photoToScrollTo: null }
 const { useGlobalState } = createGlobalState(initialState)
 
 export const useLastViewedPhoto = () => {
-  return useGlobalState('photoToScrollTo')
+    return useGlobalState('photoToScrollTo')
 }

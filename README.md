@@ -28,4 +28,4 @@ pnpm create next-app --example with-cloudinary nextjs-image-gallery
 
 ## References
 
-- Cloudinary API: https://cloudinary.com/documentation/transformation_reference
+-   Cloudinary API: https://cloudinary.com/documentation/transformation_reference
