@@ -39,23 +39,13 @@ export default function Navbar(props: NavbarProps) {
                                 setFilters={setFilters}
                                 options={FILTER_MEDIUM_OPTIONS}
                             />
-                            <div>
-                                <div className="font-semibold text-sm">
-                                    Size
-                                </div>
-                                <div className="divider m-0 mb-1"></div>
-                                <div className="flex gap-2 flex-wrap">
-                                    <div className="bg-gray-100 pr-2 pl-2 pt-1 pb-1 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300">
-                                        5x8
-                                    </div>
-                                    <div className="bg-gray-100 pr-2 pl-2 pt-1 pb-1 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300">
-                                        8x10
-                                    </div>
-                                    <div className="bg-gray-100 pr-2 pl-2 pt-1 pb-1 flex justify-center items-center rounded cursor-pointer hover:bg-gray-300">
-                                        16x24
-                                    </div>
-                                </div>
-                            </div>
+                            <FilterCategory
+                                category="size"
+                                title="Size"
+                                filters={filters}
+                                setFilters={setFilters}
+                                options={FILTER_SIZE_OPTIONS}
+                            />
                         </div>
                     </div>
                 </div>
@@ -74,4 +64,10 @@ const FILTER_TYPE_OPTIONS: FilterOptionProps[] = [
     { id: 'landscape', label: 'Landscape' },
     { id: 'portrait', label: 'Portrait' },
     { id: 'custom', label: 'Custom' },
+]
+
+const FILTER_SIZE_OPTIONS: FilterOptionProps[] = [
+    { id: '5x8', label: '5x8' },
+    { id: '8x10', label: '8x10' },
+    { id: '16x24', label: '16x24' },
 ]
