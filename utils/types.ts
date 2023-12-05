@@ -18,3 +18,27 @@ export interface SharedModalProps {
     navigation: boolean
     direction?: number
 }
+
+export interface NavbarProps {
+    filters: FiltersProps
+    setFilters: (filters: FiltersProps) => void
+}
+
+interface FiltersProps {
+    medium: string
+    type: string
+    size: string
+}
+
+export interface FilterOptionProps {
+    id: string
+    label: string
+}
+
+export interface FilterCategoryProps {
+    category: string
+    title: string
+    filters: FiltersProps
+    setFilters: (filters: FiltersProps) => void
+    options: FilterOptionProps[]
+}
