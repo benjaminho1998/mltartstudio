@@ -19,7 +19,7 @@ export default function Navbar(props: NavbarProps) {
                     </button>
                     <div
                         tabIndex={0}
-                        className="flex flex-col gap-2 dropdown-content z-[1] p-4 shadow rounded-md bg-white w-72 text-black mt-4 pb-4"
+                        className="flex flex-col gap-2 dropdown-content z-[1] p-4 shadow-2xl rounded-md bg-white w-72 text-black mt-4 pb-4"
                     >
                         <div className="font-semibold w-full flex justify-center">
                             Filter by
