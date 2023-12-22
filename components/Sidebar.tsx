@@ -4,7 +4,10 @@ import { openUrl } from '../utils/openUrl'
 
 export default function Sidebar() {
     return (
-        <div className="after:content relative mb-5 flex h-auto flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-gray-100 px-6 pb-10 pt-64 text-center text-black shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
+        <div
+            style={{ boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.35)' }}
+            className="after:content relative mb-5 flex h-auto flex-col items-center justify-end gap-4 overflow-hidden px-6 pb-10 pt-64 text-center text-black after:pointer-events-none after:absolute after:inset-0 lg:pt-0"
+        >
             <div className="absolute inset-0 flex items-center justify-center opacity-20">
                 {/*<span className="flex max-h-full max-w-full items-center justify-center opacity-50">*/}
                 {/*  <Bridge />*/}

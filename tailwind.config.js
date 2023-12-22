@@ -18,6 +18,11 @@ module.exports = {
                 wide: { raw: '(min-aspect-ratio: 3 / 2)' },
                 'taller-than-854': { raw: '(min-height: 854px)' },
             },
+
+            fontFamily: {
+                kalam: ['Kalam', 'cursive'],
+                parisienne: ['Parisienne', 'cursive'],
+            },
         },
     },
     plugins: [require('daisyui')],

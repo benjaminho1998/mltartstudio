@@ -31,6 +31,15 @@ class MyDocument extends Document {
                         name="twitter:description"
                         content="See pictures from Next.js Conf and the After Party."
                     />
+                    <link
+                        rel="preconnect"
+                        href="https://fonts.googleapis.com"
+                    />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Parisienne&display=swap"
+                        rel="stylesheet"
+                    />
                 </Head>
                 <body className="antialiased h-screen">
                     <Main />
