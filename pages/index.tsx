@@ -16,6 +16,7 @@ import Bridge from '../components/Icons/Bridge'
 import Hero from '../components/Hero'
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
+    console.log('Images', images)
     const [filters, setFilters] = useState({ type: '', medium: '', size: '' })
     const router = useRouter()
     const { photoId } = router.query
