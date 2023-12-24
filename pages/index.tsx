@@ -10,16 +10,18 @@ import getBase64ImageUrl from '../utils/generateBlurPlaceholder'
 import type { ImageProps } from '../utils/types'
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
 import { motion } from 'framer-motion'
-import Sidebar from '../components/Sidebar'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import Bio from '../components/Bio'
+import Filter from '../components/Filter'
+import Bridge from '../components/Icons/Bridge'
+import Hero from '../components/Hero'
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
     const [filters, setFilters] = useState({ type: '', medium: '', size: '' })
     const router = useRouter()
     const { photoId } = router.query
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
-    const contentRef = useRef(null)
 
+    const contentRef = useRef<HTMLDivElement>(null)
     const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null)
 
     const container = {
@@ -36,6 +38,14 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         hidden: { opacity: 0 },
         show: { opacity: 1 },
     }
+
+    const filteredImages = images.filter((i) =>
+        filters.medium
+            ? i.tags?.some((tag) => tag.toLowerCase() === filters.medium)
+            : i
+    )
+
+    const filterActive = filters.medium || filters.size
 
     useEffect(() => {
         // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
@@ -58,73 +68,48 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                     content="https://nextjsconf-pics.vercel.app/og-image.png"
                 />
             </Head>
-            {/*<Navbar filters={filters} setFilters={setFilters} />*/}
-            <main className="mx-auto max-w-[1960px] pb-4">
-                {photoId && (
-                    <Modal
-                        images={images}
-                        onClose={() => {
-                            setLastViewedPhoto(photoId)
-                        }}
-                    />
-                )}
-                <div
-                    className="hero min-h-screen"
-                    style={{
-                        backgroundImage:
-                            'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)',
-                    }}
-                >
-                    <div className="hero-overlay bg-opacity-60"></div>
-                    <div className="hero-content text-center text-neutral-content">
-                        <div className="max-w-md flex flex-col items-center">
-                            <h1 className="mb-5 text-5xl text-white font-bold font-kalam">
-                                Mlt Art Studio
-                            </h1>
-                            <motion.div
-                                onClick={() =>
-                                    contentRef.current.scrollIntoView({
-                                        behavior: 'smooth',
-                                    })
-                                }
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 1.25 }}
-                                className="flex flex-col items-center cursor-pointer"
-                            >
-                                <div className="text-white text-xl font-semibold">
-                                    Explore
-                                </div>
-                                <ChevronDownIcon
-                                    className="-mt-1"
-                                    color="white"
-                                    height={30}
-                                />
-                            </motion.div>
+            <main className="mx-auto max-w-[1960px] pb-10 flex flex-col">
+                <Hero contentRef={contentRef} />
+                <div ref={contentRef} className="pl-4 pr-4 lg:pl-60 lg:pr-60">
+                    <Bio />
+                    <div className="pt-16 w-full flex justify-between pb-3 items-center">
+                        <div className="text-[40px] font-kalam text-black">
+                            Gallery
+                        </div>
+                        <div className="flex gap-6 items-center">
+                            {/*{filterActive && (*/}
+                            {/*    <div className="flex gap-1 items-center">*/}
+                            {/*        {filters.medium && (*/}
+                            {/*            <div className="pt-1 pb-1 pl-2 pr-2 bg-gray-100 text-black rounded cursor-pointer">*/}
+                            {/*                {filters.medium}*/}
+                            {/*            </div>*/}
+                            {/*        )}*/}
+                            {/*        {filters.size && (*/}
+                            {/*            <div className="pt-1 pb-1 pl-2 pr-2 bg-gray-100 text-black rounded cursor-pointer">*/}
+                            {/*                {filters.size}*/}
+                            {/*            </div>*/}
+                            {/*        )}*/}
+                            {/*    </div>*/}
+                            {/*)}*/}
+                            <Filter filters={filters} setFilters={setFilters} />
                         </div>
                     </div>
-                </div>
-                <div
-                    ref={contentRef}
-                    className="pl-60 pr-60 columns-1 gap-4 sm:columns-2 xl:columns-2 2xl:columns-3 pt-10"
-                >
-                    <Sidebar />
-                    {images && (
-                        <motion.div
-                            variants={container}
-                            initial="hidden"
-                            animate="show"
-                        >
-                            {images
-                                .filter((i) =>
-                                    filters.medium
-                                        ? i.tags?.some(
-                                              (tag) =>
-                                                  tag.toLowerCase() ===
-                                                  filters.medium
-                                          )
-                                        : i
-                                )
-                                .map(
+                    {photoId && (
+                        <Modal
+                            images={images}
+                            onClose={() => {
+                                setLastViewedPhoto(photoId)
+                            }}
+                        />
+                    )}
+                    <div className="columns-1 gap-4 sm:columns-2 xl:columns-2 2xl:columns-3">
+                        {images && filteredImages && (
+                            <motion.div
+                                variants={container}
+                                initial="hidden"
+                                animate="show"
+                            >
+                                {filteredImages.map(
                                     ({
                                         id,
                                         public_id,
@@ -142,6 +127,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                                                         : null
                                                 }
                                                 shallow
+                                                scroll={false}
                                                 className="after:content group relative mb-5 block w-full cursor-pointer after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
                                             >
                                                 <Image
@@ -167,7 +153,21 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                                         </motion.div>
                                     )
                                 )}
-                        </motion.div>
+                            </motion.div>
+                        )}
+                    </div>
+                    {filteredImages.length === 0 && (
+                        <div className="flex flex-col items-center mt-6">
+                            <h1 className="text-black text-xl font-kalam">
+                                No images match your filters
+                            </h1>
+                            <div className="flex items-center justify-center opacity-80">
+                                <span className="flex h-[650px] w-[450px] items-center justify-center opacity-90">
+                                    <Bridge />
+                                </span>
+                                <span className="h-[300px] bg-gradient-to-b from-black/0 via-black to-black"></span>
+                            </div>
+                        </div>
                     )}
                 </div>
             </main>
