@@ -1,8 +1,8 @@
 import { TbFilter } from 'react-icons/tb'
-import { FilterOptionProps, NavbarProps } from '../utils/types'
+import { FilterOptionProps, FilterProps } from '../utils/types'
 import FilterCategory from './FilterCategory'
 
-export default function Filter(props: NavbarProps) {
+export default function Filter(props: FilterProps) {
     const { filters, setFilters } = props
 
     const getNumActiveFilters = () => {

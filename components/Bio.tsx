@@ -48,7 +48,7 @@ export default function Bio() {
                 </div>
             </div>
             <p className="z-0 max-w-[100ch] text-black/75 sm:max-w-[60ch] text-left mb-4">
-                Welcome to my art studio! <br />
+                Welcome to MLT art studio! <br />
                 <br />
                 I'm Mengling, the brush behind the canvas and the heart behind
                 the art. Nestled in the vibrant Bay Area, I've been on a

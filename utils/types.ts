@@ -19,7 +19,7 @@ export interface SharedModalProps {
     direction?: number
 }
 
-export interface NavbarProps {
+export interface FilterProps {
     filters: FiltersProps
     setFilters: (filters: FiltersProps) => void
 }

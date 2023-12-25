@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { MutableRefObject } from 'react'
+import Image from 'next/image'
 
 interface HeroProps {
     contentRef: MutableRefObject<HTMLDivElement>
@@ -10,17 +11,21 @@ export default function Hero(props: HeroProps) {
     const { contentRef } = props
 
     return (
-        <motion.div
-            className="hero min-h-screen"
-            style={{
-                backgroundImage:
-                    'url(https://res.cloudinary.com/dnjhwnfjd/image/upload/v1703370612/MltCover_sfk3tg.jpg)',
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-        >
-            <div className="hero-overlay bg-opacity-30"></div>
-            <div className="hero-content text-center text-neutral-content">
+        <>
+            <motion.div
+                className="min-h-screen w-screen relative z-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+            >
+                <Image
+                    src="https://res.cloudinary.com/dnjhwnfjd/image/upload/v1703370612/cover.jpg"
+                    alt="hero"
+                    fill
+                    className="object-cover"
+                />
+            </motion.div>
+            <div className="min-h-screen w-full absolute bg-black bg-opacity-20" />
+            <div className="min-h-screen w-full absolute flex justify-center items-center">
                 <div className="max-w-md flex flex-col items-center">
                     <h1 className="mb-5 text-5xl text-white font-bold font-kalam">
                         MLT Art Studio
@@ -46,6 +51,6 @@ export default function Hero(props: HeroProps) {
                     </motion.div>
                 </div>
             </div>
-        </motion.div>
+        </>
     )
 }
