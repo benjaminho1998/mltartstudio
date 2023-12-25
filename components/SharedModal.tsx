@@ -83,7 +83,7 @@ export default function SharedModal({
                                     width={navigation ? 1280 : 1920}
                                     height={navigation ? 853 : 1280}
                                     priority
-                                    alt="Next.js Conf image"
+                                    alt="Mengling's art"
                                     onLoad={() => setLoaded(true)}
                                 />
                             </motion.div>
@@ -129,6 +129,11 @@ export default function SharedModal({
                                 </>
                             )}
                             <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
+                                {/*{currentImage.tags.map((tag) => (*/}
+                                {/*    <div className="pt-1 pb-1 pl-2 pr-2 bg-gray-100 text-black rounded">*/}
+                                {/*        {tag}*/}
+                                {/*    </div>*/}
+                                {/*))}*/}
                                 {navigation ? (
                                     <a
                                         href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${currentImage.public_id}.${currentImage.format}`}

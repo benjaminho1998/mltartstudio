@@ -34,9 +34,7 @@ export default function Bio() {
                     </div>
                     <div
                         onClick={() =>
-                            openUrl(
-                                'https://www.instagram.com/mltartstudio/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=='
-                            )
+                            openUrl('https://www.etsy.com/shop/MltArtStudio')
                         }
                         className="tooltip tooltip-bottom"
                         data-tip="Etsy"
@@ -57,7 +55,9 @@ export default function Bio() {
                 <br />
                 <br />
                 Your support means the world to me, and I'm excited to share my
-                passion with you. <br />
+                passion with you. Discover an exhibition of my artwork, down
+                below.
+                <br />
                 <br />
                 With gratitude and artful wishes, <br />
                 Mengling <br />

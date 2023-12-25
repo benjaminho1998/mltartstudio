@@ -16,7 +16,6 @@ import Bridge from '../components/Icons/Bridge'
 import Hero from '../components/Hero'
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
-    console.log('Images', images)
     const [filters, setFilters] = useState({ type: '', medium: '', size: '' })
     const router = useRouter()
     const { photoId } = router.query
@@ -69,14 +68,19 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                     content="https://nextjsconf-pics.vercel.app/og-image.png"
                 />
             </Head>
+            {photoId && (
+                <Modal
+                    images={images}
+                    onClose={() => {
+                        setLastViewedPhoto(photoId)
+                    }}
+                />
+            )}
             <main className="mx-auto max-w-[1960px] pb-10 flex flex-col">
                 <Hero contentRef={contentRef} />
                 <div ref={contentRef} className="pl-4 pr-4 lg:pl-60 lg:pr-60">
                     <Bio />
-                    <div className="pt-16 w-full flex justify-between pb-3 items-center">
-                        <div className="text-[40px] font-kalam text-black">
-                            Gallery
-                        </div>
+                    <div className="pt-16 w-full flex justify-end pb-3 items-center">
                         <div className="flex gap-6 items-center">
                             {/*{filterActive && (*/}
                             {/*    <div className="flex gap-1 items-center">*/}
@@ -95,14 +99,6 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                             <Filter filters={filters} setFilters={setFilters} />
                         </div>
                     </div>
-                    {photoId && (
-                        <Modal
-                            images={images}
-                            onClose={() => {
-                                setLastViewedPhoto(photoId)
-                            }}
-                        />
-                    )}
                     <div className="columns-1 gap-4 sm:columns-2 xl:columns-2 2xl:columns-3">
                         {images && filteredImages && (
                             <motion.div

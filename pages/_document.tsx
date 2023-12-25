@@ -5,7 +5,7 @@ class MyDocument extends Document {
         return (
             <Html lang="en" className="bg-white">
                 <Head>
-                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="icon" href="/MltLogo.jpg" />
                     <meta
                         name="description"
                         content="See pictures from Next.js Conf and the After Party."
