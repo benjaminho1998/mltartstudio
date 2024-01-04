@@ -26,7 +26,6 @@ export interface FilterProps {
 
 interface FiltersProps {
     medium: string
-    type: string
     size: string
 }
 

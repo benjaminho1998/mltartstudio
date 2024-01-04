@@ -16,7 +16,7 @@ import Bridge from '../components/Icons/Bridge'
 import Hero from '../components/Hero'
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
-    const [filters, setFilters] = useState({ type: '', medium: '', size: '' })
+    const [filters, setFilters] = useState({ medium: '', size: '' })
     const router = useRouter()
     const { photoId } = router.query
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
@@ -39,11 +39,20 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         show: { opacity: 1 },
     }
 
-    const filteredImages = images.filter((i) =>
-        filters.medium
-            ? i.tags?.some((tag) => tag.toLowerCase() === filters.medium)
-            : i
-    )
+    const filteredImages = images.filter((i) => {
+        const containsMedium = i.tags?.some(
+            (tag) => tag.toLowerCase() === filters.medium
+        )
+        const containsSize = i.tags?.some(
+            (tag) => tag.toLowerCase() === filters.size
+        )
+
+        if (filters.medium && filters.size)
+            return containsMedium && containsSize
+        if (filters.medium) return containsMedium
+        if (filters.size) return containsSize
+        return true
+    })
 
     const filterActive = filters.medium || filters.size
 
