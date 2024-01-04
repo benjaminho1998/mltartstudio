@@ -30,7 +30,7 @@ export default function Filter(props: FilterProps) {
             </div>
             <div
                 tabIndex={0}
-                className="flex flex-col gap-2 dropdown-content z-[50] p-4 shadow-2xl rounded-md bg-black w-72 text-black pb-4"
+                className="flex flex-col gap-2 dropdown-content z-[50] p-4 shadow-2xl rounded-md bg-white mt-2 w-72 text-black pb-4"
             >
                 <div className="font-semibold w-full flex justify-center">
                     Filter by
