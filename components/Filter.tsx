@@ -15,7 +15,11 @@ export default function Filter(props: FilterProps) {
 
     return (
         <div className="dropdown dropdown-end">
-            <button className="btn bg-white indicator border border-black hover:bg-orange-400">
+            <div
+                tabIndex={0}
+                role="button"
+                className="btn bg-white indicator border border-black hover:bg-orange-400"
+            >
                 {filterActive && (
                     <span className="indicator-item badge bg-orange-400 rounded-full text-black h-[20px] w-[20px]">
                         {getNumActiveFilters()}
@@ -23,10 +27,10 @@ export default function Filter(props: FilterProps) {
                 )}
                 <span className="text-black">Filter</span>
                 <TbFilter size={20} color="black" />
-            </button>
+            </div>
             <div
                 tabIndex={0}
-                className="flex flex-col gap-2 dropdown-content z-[1] p-4 shadow-2xl rounded-md bg-white w-72 text-black mt-4 pb-4"
+                className="flex flex-col gap-2 dropdown-content z-[50] p-4 shadow-2xl rounded-md bg-black w-72 text-black pb-4"
             >
                 <div className="font-semibold w-full flex justify-center">
                     Filter by

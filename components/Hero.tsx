@@ -13,7 +13,7 @@ export default function Hero(props: HeroProps) {
     return (
         <>
             <motion.div
-                className="min-h-screen w-screen relative z-0"
+                className="min-h-screen relative z-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >

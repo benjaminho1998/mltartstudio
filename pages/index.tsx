@@ -78,7 +78,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             )}
             <main className="mx-auto max-w-[1960px] pb-10 flex flex-col">
                 <Hero contentRef={contentRef} />
-                <div ref={contentRef} className="pl-4 pr-4 lg:pl-60 lg:pr-60">
+                <div ref={contentRef} className="pl-4 pr-4 xl:pl-52 xl:pr-52">
                     <Bio />
                     <div className="pt-16 w-full flex justify-end pb-3 items-center">
                         <div className="flex gap-6 items-center">
