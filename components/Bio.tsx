@@ -62,7 +62,7 @@ export default function Bio() {
                 With gratitude and artful wishes, <br />
                 Mengling <br />
                 <br />
-                P.S. You can find all of my creations and more on my{' '}
+                P.S. You can find some of these creations and more on my{' '}
                 <a
                     className="pointer underline z-10 hover:text-orange-400"
                     href="https://www.etsy.com/shop/MltArtStudio"
