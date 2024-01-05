@@ -84,7 +84,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             )}
             <main className="mx-auto max-w-[1960px] pb-10 flex flex-col">
                 <Hero contentRef={contentRef} />
-                <div ref={contentRef} className="pl-4 pr-4 xl:pl-52 xl:pr-52">
+                <div ref={contentRef} className="pl-4 pr-4 xl:pl-36 xl:pr-36">
                     <Bio />
                     <div className="pt-16 w-full flex justify-end pb-3 items-center">
                         <div className="flex gap-6 items-center">
@@ -105,7 +105,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                             <Filter filters={filters} setFilters={setFilters} />
                         </div>
                     </div>
-                    <div className="columns-1 gap-4 sm:columns-2 xl:columns-2 2xl:columns-3">
+                    <div className="columns-1 gap-4 sm:columns-2 md:columns-3">
                         {images && filteredImages && (
                             <motion.div
                                 variants={container}
