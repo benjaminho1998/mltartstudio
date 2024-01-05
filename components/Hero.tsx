@@ -27,7 +27,7 @@ export default function Hero(props: HeroProps) {
             <div className="min-h-screen w-full absolute bg-black bg-opacity-20" />
             <div className="min-h-screen w-full absolute flex justify-center items-center">
                 <div className="max-w-md flex flex-col items-center">
-                    <h1 className="mb-5 text-5xl text-white font-bold font-kalam">
+                    <h1 className="mb-5 text-3xl sm:text-5xl text-white font-bold font-kalam">
                         MLT Art Studio
                     </h1>
                     <motion.div

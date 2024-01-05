@@ -1,5 +1,4 @@
 import {
-    ArrowUturnLeftIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
     XMarkIcon,
@@ -10,6 +9,7 @@ import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { variants } from '../utils/animationVariants'
 import type { SharedModalProps } from '../utils/types'
+import useKeypress from 'react-use-keypress'
 
 export default function SharedModal({
     index,
@@ -29,11 +29,13 @@ export default function SharedModal({
     const handlers = useSwipeable({
         onSwipedLeft: () => {
             if (index < images?.length - 1) {
+                setLoaded(false)
                 changePhotoId(index + 1)
             }
         },
         onSwipedRight: () => {
             if (index > 0) {
+                setLoaded(false)
                 changePhotoId(index - 1)
             }
         },
@@ -41,6 +43,20 @@ export default function SharedModal({
     })
 
     let currentImage = images ? images[index] : currentPhoto
+
+    useKeypress('ArrowRight', () => {
+        if (index + 1 < images.length) {
+            setLoaded(false)
+            changePhotoId(index + 1)
+        }
+    })
+
+    useKeypress('ArrowLeft', () => {
+        if (index > 0) {
+            setLoaded(false)
+            changePhotoId(index - 1)
+        }
+    })
 
     return (
         <MotionConfig
@@ -66,6 +82,14 @@ export default function SharedModal({
                                 exit="exit"
                                 className="absolute w-screen h-[calc(100vh-100px)]"
                             >
+                                <div className="absolute z-100 w-full -top-10 left-3">
+                                    <button
+                                        onClick={closeModal}
+                                        className="rounded-full bg-black/50 p-2 z-100 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                                    >
+                                        <XMarkIcon className="h-5 w-5" />
+                                    </button>
+                                </div>
                                 <Image
                                     src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${currentImage.public_id}.${currentImage.format}`}
                                     fill
@@ -78,6 +102,11 @@ export default function SharedModal({
                         </AnimatePresence>
                     </div>
                 </div>
+                {!loaded && (
+                    <div className="absolute w-full flex justify-center">
+                        <span className="loading loading-spinner loading-lg"></span>
+                    </div>
+                )}
 
                 {/* Buttons + bottom nav bar */}
                 <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
@@ -93,9 +122,10 @@ export default function SharedModal({
                                                 transform:
                                                     'translate3d(0, 0, 0)',
                                             }}
-                                            onClick={() =>
+                                            onClick={() => {
+                                                setLoaded(false)
                                                 changePhotoId(index - 1)
-                                            }
+                                            }}
                                         >
                                             <ChevronLeftIcon className="h-6 w-6" />
                                         </button>
@@ -107,9 +137,10 @@ export default function SharedModal({
                                                 transform:
                                                     'translate3d(0, 0, 0)',
                                             }}
-                                            onClick={() =>
+                                            onClick={() => {
+                                                setLoaded(false)
                                                 changePhotoId(index + 1)
-                                            }
+                                            }}
                                         >
                                             <ChevronRightIcon className="h-6 w-6" />
                                         </button>
@@ -122,18 +153,6 @@ export default function SharedModal({
                                 {/*        {tag}*/}
                                 {/*    </div>*/}
                                 {/*))}*/}
-                            </div>
-                            <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
-                                <button
-                                    onClick={() => closeModal()}
-                                    className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                                >
-                                    {navigation ? (
-                                        <XMarkIcon className="h-5 w-5" />
-                                    ) : (
-                                        <ArrowUturnLeftIcon className="h-5 w-5" />
-                                    )}
-                                </button>
                             </div>
                         </div>
                     )}
