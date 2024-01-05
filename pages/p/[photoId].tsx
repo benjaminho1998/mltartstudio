@@ -12,12 +12,12 @@ const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
     const { photoId } = router.query
     let index = Number(photoId)
 
-    const currentPhotoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_2560/${currentPhoto.public_id}.${currentPhoto.format}`
+    const currentPhotoUrl = `https://res.cloudinary.com/dnjhwnfjd/image/upload/v1704389300/mltArtStudio/007AC8C4-F524-4CA7-95E6-E7E586E0FCB8treasure-hunt_v6rxnx.gif`
 
     return (
         <>
             <Head>
-                <title>Next.js Conf 2022 Photos</title>
+                <title>MLT Art Studio</title>
                 <meta property="og:image" content={currentPhotoUrl} />
                 <meta name="twitter:image" content={currentPhotoUrl} />
             </Head>

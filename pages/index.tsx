@@ -28,9 +28,6 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-            },
         },
     }
 
