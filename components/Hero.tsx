@@ -11,9 +11,9 @@ export default function Hero(props: HeroProps) {
     const { contentRef } = props
 
     return (
-        <>
+        <div>
             <motion.div
-                className="min-h-screen relative z-0"
+                className="min-h-screen z-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >
@@ -24,8 +24,8 @@ export default function Hero(props: HeroProps) {
                     className="object-cover"
                 />
             </motion.div>
-            <div className="min-h-screen w-full absolute bg-black bg-opacity-20" />
-            <div className="min-h-screen w-full absolute flex justify-center items-center">
+            <div className="min-h-screen absolute bg-black bg-opacity-20 top-0 left-0 w-full" />
+            <div className="min-h-screen absolute z-10 flex justify-center items-center top-0 left-0 w-full">
                 <div className="max-w-md flex flex-col items-center">
                     <h1 className="mb-5 text-3xl sm:text-5xl text-white font-bold font-kalam">
                         MLT Art Studio
@@ -51,6 +51,6 @@ export default function Hero(props: HeroProps) {
                     </motion.div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
