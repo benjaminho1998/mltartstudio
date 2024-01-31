@@ -14,7 +14,7 @@ export default function Bio() {
                         transform: 'translate3d(0, 0, 0)',
                         boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.35)',
                     }}
-                    src="https://res.cloudinary.com/dnjhwnfjd/image/upload/v1703371173/mom_pgtfzl.jpg"
+                    src="https://res.cloudinary.com/dnjhwnfjd/image/upload/v1706682462/mom_utlupy.jpg"
                     width={200}
                     height={200}
                 />
