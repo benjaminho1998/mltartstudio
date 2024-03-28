@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import { Analytics } from '@vercel/analytics/react'
 
 class MyDocument extends Document {
     render() {
@@ -35,6 +36,7 @@ class MyDocument extends Document {
                 <body className="antialiased h-screen">
                     <Main />
                     <NextScript />
+                    <Analytics />
                 </body>
             </Html>
         )
